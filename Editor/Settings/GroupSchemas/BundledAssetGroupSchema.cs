@@ -560,13 +560,6 @@ namespace UnityEditor.AddressableAssets.Settings.GroupSchemas
 
         internal override void Validate()
         {
-            if (Group != null && Group.Settings != null)
-            {
-                List<string> variableNames = Group.Settings.profileSettings.GetVariableNames();
-                SetPathVariable(Group.Settings, ref m_BuildPath, AddressableAssetSettings.kLocalBuildPath, "LocalBuildPath", variableNames);
-                SetPathVariable(Group.Settings, ref m_LoadPath, AddressableAssetSettings.kLocalLoadPath, "LocalLoadPath", variableNames);
-            }
-
             if (m_AssetBundleProviderType.Value == null)
                 m_AssetBundleProviderType.Value = typeof(AssetBundleProvider);
             if (m_BundledAssetProviderType.Value == null)
