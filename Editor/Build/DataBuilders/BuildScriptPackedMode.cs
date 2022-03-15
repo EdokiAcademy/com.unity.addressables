@@ -732,13 +732,21 @@ namespace UnityEditor.AddressableAssets.Build.DataBuilders
         internal static string ErrorCheckBundleSettings(BundledAssetGroupSchema schema, AddressableAssetGroup assetGroup, AddressableAssetSettings settings)
         {
             var message = string.Empty;
+            
+            Debug.Log(settings == null);
+            Debug.Log(settings.profileSettings == null);
+            Debug.Log(schema == null);
+            Debug.Log(schema.BuildPath == null);
+            Debug.Log(assetGroup == null);
 
             string buildPath = settings.profileSettings.GetValueById(settings.activeProfileId, schema.BuildPath.Id);
             string loadPath = settings.profileSettings.GetValueById(settings.activeProfileId, schema.LoadPath.Id);
+            
+            Debug.Log(buildPath == null);
+            Debug.Log(loadPath == null);
 
             bool buildLocal = buildPath.Contains("[UnityEngine.AddressableAssets.Addressables.BuildPath]");
             bool loadLocal = loadPath.Contains("{UnityEngine.AddressableAssets.Addressables.RuntimePath}");
-
             if (buildLocal && !loadLocal)
             {
                 message = "BuildPath for group '" + assetGroup.Name + "' is set to the dynamic-lookup version of StreamingAssets, but LoadPath is not. \n";
