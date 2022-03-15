@@ -733,17 +733,17 @@ namespace UnityEditor.AddressableAssets.Build.DataBuilders
         {
             var message = string.Empty;
             
-            Debug.Log(settings == null);
-            Debug.Log(settings.profileSettings == null);
-            Debug.Log(schema == null);
-            Debug.Log(schema.BuildPath == null);
-            Debug.Log(assetGroup == null);
+            Debug.Log(settings);
+            Debug.Log(settings.profileSettings);
+            Debug.Log(schema);
+            Debug.Log(schema.BuildPath);
+            Debug.Log(assetGroup);
 
             string buildPath = settings.profileSettings.GetValueById(settings.activeProfileId, schema.BuildPath.Id);
             string loadPath = settings.profileSettings.GetValueById(settings.activeProfileId, schema.LoadPath.Id);
             
-            Debug.Log(buildPath == null);
-            Debug.Log(loadPath == null);
+            Debug.Log(buildPath);
+            Debug.Log(loadPath);
 
             bool buildLocal = buildPath.Contains("[UnityEngine.AddressableAssets.Addressables.BuildPath]");
             bool loadLocal = loadPath.Contains("{UnityEngine.AddressableAssets.Addressables.RuntimePath}");
